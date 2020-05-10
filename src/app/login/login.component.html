@@ -1,0 +1,45 @@
+<GridLayout rows="*, auto, *" columns="*">
+  <StackLayout row="1" col="0" padding="20">
+    <form [formGroup]="loginForm">
+      <Label text="Username"></Label>
+      <TextField
+        hint="Enter your username"
+        formControlName="username"
+      ></TextField>
+      <Label
+        text="Username is required"
+        class="footnote"
+        textWrap="true"
+        [visibility]="
+          username.dirty && username.invalid ? 'visible' : 'collapse'
+        "
+      ></Label>
+      <Label text="Password"></Label>
+      <TextField
+        hint="Enter your password"
+        formControlName="password"
+        secure="true"
+      ></TextField>
+      <Label
+        text="Password is required"
+        class="footnote"
+        textWrap="true"
+        [visibility]="
+          password.dirty && password.invalid ? 'visible' : 'collapse'
+        "
+      ></Label>
+      <Button
+        text="Login"
+        class="-primary"
+        [isEnabled]="loginForm.valid"
+        (tap)="login()"
+      ></Button>
+      <Button
+        text="Register"
+        class="-outline"
+        [isEnabled]="loginForm.valid"
+        (tap)="register()"
+      ></Button>
+    </form>
+  </StackLayout>
+</GridLayout>
